@@ -1,22 +1,26 @@
 #include"robot.h"
-#include"movements.h"
+#include"motor.h"
 
 Robot robot(211,
             1.0, 0.0, 0.0, -100.0, 100,
             1.0, 0.0, 0.0, -100.0, 100);
 
-//distancia entre ruedas
-float via = 211;
 
-void setup() {
-  // initialize digital pin 13 as an output.
-  pinMode(13, OUTPUT);
+void setup()
+{
+  Serial.begin (9600);
+  setup_motors();
 }
 
-// the loop function runs over and over again forever
-void loop() {
-  digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);              // wait for a second
-  digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
-  delay(1000);              // wait for a second
+void loop()
+{
+  //  valNew = encoder0Pos;
+  //  if (valNew != valOld) {
+  //    Serial.print (encoder0Pos, DEC);
+  //    Serial.print ("/");
+  //    valOld = valNew;
+  //  }
+  ;
 }
+
+

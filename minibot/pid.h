@@ -61,25 +61,27 @@ class PID {
       //Calculamos la funcin de salida del PID.
       _Output = _kp * (error + _ITerm + _kd * dErr);
       //bloque para la salida.
+      /*
       if (_Output > _outMax) _Output = _outMax;
       else if (_Output < _outMin) _Output = _outMin;
+      */
 
-      /*
-      if(_Output > _outMax)
-       {
-       double ITermAux = _Output - _outMax;
-       _ITerm = _ITerm - ITermAux;
-       }
 
-       else if(_Output < _outMin)
-       {
-       double ITermAux = _outMin - _Output;
-       _ITerm += ITermAux;
-       }
+      if (_Output > _outMax)
+      {
+        double ITermAux = _Output - _outMax;
+        _ITerm = _ITerm - ITermAux;
+      }
 
-       //Recalculamos la funcin de salida del PID con el nuevo _ITerm.
-       _Output = _kp * error + _ITerm + _kd * dErr;
-       */
+      else if (_Output < _outMin)
+      {
+        double ITermAux = _outMin - _Output;
+        _ITerm += ITermAux;
+      }
+
+      //Recalculamos la funcin de salida del PID con el nuevo _ITerm.
+      _Output = _kp * error + _ITerm + _kd * dErr;
+
 
       //Guardamos el valor de algunas variables para el prximo ciclo de clculo.
       _lastErr = error;

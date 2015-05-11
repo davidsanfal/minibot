@@ -4,6 +4,7 @@
 #include "WProgram.h"
 #endif
 
+//Motor Rigth
 int encoderRPinA = 2;
 int encoderRPinB = 3;
 int valRNew = 0;
@@ -11,7 +12,7 @@ int valROld = 0;
 volatile int encoderRPos = 0;
 volatile int mR = LOW;
 
-//Motor L
+//Motor Left
 int encoderLPinA = 4;
 int encoderLPinB = 5;
 int valLNew = 0;
@@ -48,13 +49,9 @@ void StateLA()
 }
 
 void setup_motors() {
-  pinMode (encoderRPinA, INPUT);
-  pinMode (encoderRPinB, INPUT);
-  attachInterrupt(1, CountRB, CHANGE);
-  attachInterrupt(0, StateRA, RISING);
+  attachInterrupt(encoderRPinB, CountRB, CHANGE);
+  attachInterrupt(encoderRPinA, StateRA, RISING);
 
-  pinMode (encoderLPinA, INPUT);
-  pinMode (encoderLPinB, INPUT);
-  attachInterrupt(1, CountLB, CHANGE);
-  attachInterrupt(0, StateLA, RISING);
+  attachInterrupt(encoderLPinB, CountLB, CHANGE);
+  attachInterrupt(encoderLPinA, StateLA, RISING);
 }

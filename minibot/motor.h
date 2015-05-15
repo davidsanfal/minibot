@@ -12,14 +12,6 @@ int valROld = 0;
 volatile int encoderRPos = 0;
 volatile int mR = LOW;
 
-//Motor Left
-int encoderLPinA = 4;
-int encoderLPinB = 5;
-int valLNew = 0;
-int valLOld = 0;
-volatile int encoderLPos = 0;
-volatile int mL = LOW;
-
 void CountRB()
 {
   if (mR == LOW) {
@@ -33,6 +25,14 @@ void StateRA()
 {
   mR = digitalRead(encoderRPinA);
 }
+
+//Motor Left
+int encoderLPinA = 4;
+int encoderLPinB = 5;
+int valLNew = 0;
+int valLOld = 0;
+volatile int encoderLPos = 0;
+volatile int mL = LOW;
 
 void CountLB()
 {
@@ -49,9 +49,9 @@ void StateLA()
 }
 
 void setup_motors() {
-  attachInterrupt(encoderRPinB, CountRB, CHANGE);
-  attachInterrupt(encoderRPinA, StateRA, RISING);
+  attachInterrupt(encoderRPinB, CountRB, RISING);
+  attachInterrupt(encoderRPinA, StateRA, CHANGE);
 
-  attachInterrupt(encoderLPinB, CountLB, CHANGE);
-  attachInterrupt(encoderLPinA, StateLA, RISING);
+  attachInterrupt(encoderLPinB, CountLB, RISING);
+  attachInterrupt(encoderLPinA, StateLA, CHANGE);
 }

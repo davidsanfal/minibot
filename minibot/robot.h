@@ -4,7 +4,7 @@
 #include "WProgram.h"
 #endif
 #include "pid.h"
-#include "step.h"
+#include "data_structures.h"
 enum Direction {RIGTH, LEFT, STOP, FRONT, BACK};
 
 class Robot {
@@ -26,19 +26,19 @@ class Robot {
 
     }
 
-    void move_to(Position pos) {
+    void move_to(Step stp) {
       unsigned long start_time = millis();
-      Vector2d relative_pos;
-      relative_pos.x = pos.pos.x - _position.pos.x;
-      relative_pos.y = pos.pos.y - _position.pos.y;
+      Position pos;
+      pos.angle = stp.dir + _position.angle;
+      pos.pos.x = _position.pos.x + (stp.module * cos(stp.dir));
+      pos.pos.y = _position.pos.x + (stp.module * sin(stp.dir));
 
       while (!(pos.angle == _position.angle)) {
-        if((pos.angle - _position.angle) > 0){;}
-        if((pos.angle - _position.angle) < 0){;}
-        unsigned long now = millis();
+        // rotate_to_angle();
       }
       while (!(pos.pos.x == _position.pos.x & pos.pos.y == _position.pos.y)) {
-        unsigned long now = millis();
+        // move_to_x();
+        // move_to_y();
       }
     }
 

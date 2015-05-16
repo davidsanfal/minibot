@@ -11,7 +11,7 @@ struct Position {
 };
 
 struct Step {
-  Step(float _dir=0, float _module=0) : dir(_dir), module(_module) {}
+  Step(float _dir = 0, float _module = 0) : dir(_dir), module(_module) {}
   float dir; //(0,2PI)
   float module; //(0, inf)
 };

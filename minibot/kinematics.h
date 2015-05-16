@@ -25,4 +25,3 @@ Position relative_movement(float wheelbase, float dist_l, float dist_r) {
   rel_pos.pos.y = radius * sin(angle);
   return rel_pos;
 }
-

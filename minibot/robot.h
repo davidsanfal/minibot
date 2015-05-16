@@ -12,7 +12,7 @@ enum Direction {RIGTH, LEFT, STOP, FRONT, BACK};
 class Robot {
 
   public:
-    Robot( float wheelbase, float wheel_diameter,
+    Robot( float wheelbase, float wheel_diameter, int encoder_steps,
            double kp_r, double ki_r, double kd_r, double outMin_r, double outMax_r,
            double kp_l, double ki_l, double kd_l, double outMin_l, double outMax_l):
       _pid_r(kp_r, ki_r, kd_r, outMin_r, outMax_r),
@@ -26,7 +26,8 @@ class Robot {
       _position.pos.x = 0.0f;
       _position.pos.y = 0.0f;
       _speed = 0;
-
+      _encoder_steps = encoder_steps;
+      _wheel_step = _wheel_diameter * PI / encoder_steps;
     }
 
     void move_to(Step stp) {
@@ -44,14 +45,15 @@ class Robot {
         // move_to_y();
       }
     }
-    
-    void set_speed(float spd){
-        _speed = spd;
-       }
+
+    void set_speed(float spd) {
+      _speed = spd;
+    }
 
   private:
-  
+
     PID _pid_r, _pid_l;
-    float _wheelbase, _wheel_diameter, _speed;
+    float _wheelbase, _wheel_diameter, _speed, _wheel_step;
     Position _position;
+    int _encoder_steps;
 };

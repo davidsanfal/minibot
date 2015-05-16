@@ -2,7 +2,7 @@
 #include"motor.h"
 
 Step steps[256];
-Robot robot(211,
+Robot robot(211.0f, 80.0f,
             1.0, 0.0, 0.0, -100.0, 100,
             1.0, 0.0, 0.0, -100.0, 100);
 

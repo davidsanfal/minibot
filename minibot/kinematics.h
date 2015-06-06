@@ -18,10 +18,11 @@ float angle_rotated(float wheelbase, float dist_l, float dist_r) {
 
 Position relative_movement(float wheelbase, float dist_l, float dist_r) {
   Position rel_pos;
-  float dist = (dist_l + dist_r)/2
+  float radius = 0;
+  float dist = (dist_l + dist_r) / 2;
   float angle = angle_rotated(wheelbase, dist_l, dist_r);
-  if(dist_l != dist_r){
-  float radius = radius_rotation(wheelbase, dist_l, dist_r);
+  if (dist_l != dist_r) {
+    radius = radius_rotation(wheelbase, dist_l, dist_r);
   }
   rel_pos.angle = angle;
   rel_pos.pos.x = radius * cos(angle);

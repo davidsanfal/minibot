@@ -35,7 +35,7 @@ class DeadReckoning
         float getOrientacionObjetivo(); // indica orientación relativa para dirigirse al objetivo
 
     private:
-        static const float _RADIO_POSICION = 10; // 1 cm de radio de alcance de objetivo
+        static const float _RADIO_POSICION = 100; // 1 cm de radio de alcance de objetivo
             
         float _resolucionEncoder; // cuentas por vuelta del encoder
         float _anguloPorLectura;
